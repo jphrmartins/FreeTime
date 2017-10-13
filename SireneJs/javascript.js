@@ -20,20 +20,28 @@ btn.style.margin = "0 auto";
 btn.innerText = "IIIII UOOOOOO";
 btn.addEventListener("click", sirene);
 
-
+var audio = document.createElement("audio");
+audio.src = "sirene.wav";
+audio.loop = true;
 document.body.append(divEsquerda);
 document.body.append(divDireita);
 document.body.append(btn);
+document.body.append(audio);
 
 var ativoBtn = false;
 var ativoDiv = false;
 var intervalo;
+var sirene;
 function sirene() {
   if(!ativoBtn){
-    intervalo = setInterval(change, 500);
+    intervalo = setInterval(change, 400);
+    sirene = setInterval(toca, 200);
     ativoBtn = true;
   } else {
     clearInterval(intervalo);
+    clearInterval(sirene);
+    audio.pause();
+    audio.currentTime = 0;
     ativoBtn = false;
   }
 }
@@ -47,4 +55,9 @@ function change() {
     divDireita.style.backgroundColor = "#00F";
     ativoDiv = false;
   }
+}
+function toca (){
+  audio.currentTime = 0;
+  audio.play();
+  audio.currentTime = 0;
 }
