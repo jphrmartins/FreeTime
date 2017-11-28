@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="amigoSecreto">
+<head>
+	<title>Amigo Surpresa</title>
+</head>
+<style type="text/css">
+
+	body{
+		background-image: url(migomigo1.jpg) ;
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+	input{
+		font-size: 19px;
+		font-family:'Cabin Sketch', cursive;
+		margin-top: 10px;
+		display: inline-block;
+
+	}
+	label{
+		font-size: 25px;
+		font-family: 'Cabin Sketch', cursive;
+		color: #9FA8DA; 
+		margin-left: 10px;
+	}
+	.botao{
+		margin:100px auto;
+		width: 200px;
+
+	}
+	button{
+		width: 100px;
+		height: 50px;
+		font-size: 20px;
+		background-color: #9FA8DA;
+		font-family: 'Cabin Sketch', cursive;
+		border-radius: 20px;
+	}
+	button:hover{
+		background-color: #3949AB;
+
+	}
+	#corpo{
+		width: 80%;
+		margin:10px auto;
+	}
+	#botoes{
+		margin:5px auto;
+		text-align: center;
+	}
+	
+</style>
+
+<body ng-controller="interface">
+
+	<div id="corpo">
+		<div ng-repeat="amigos in listaAmigos">
+			<label><b>Nome :<b></label>
+			<input type="text" />
+		</div>
+	</div>
+
+
+	<div id="botoes">
+		<button class="botao">Adicionar</button>
+		<button class="botao">Sortear</button>
+	</div>
+
+
+
+
+
+</body>
+</html>
+
+
+
+
