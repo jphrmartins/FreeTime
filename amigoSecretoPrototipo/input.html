@@ -39,7 +39,7 @@
 	}
 	button:hover{
 		background-color: #3949AB;
-
+		
 	}
 	#corpo{
 		width: 80%;
@@ -49,13 +49,16 @@
 		margin:5px auto;
 		text-align: center;
 	}
+	.inputs{
+		display: inline-block
+	}
 	
 </style>
 
 <body ng-controller="interface">
 
 	<div id="corpo">
-		<div ng-repeat="amigos in listaAmigos">
+		<div class="inputs" ng-repeat="amigos in listaAmigos track by $index">
 			<label><b>Nome :<b></label>
 			<input type="text" />
 		</div>
@@ -63,8 +66,8 @@
 
 
 	<div id="botoes">
-		<button class="botao">Adicionar</button>
-		<button class="botao">Sortear</button>
+		<button ng-click="adicionar()" class="botao">Adicionar</button>
+		<button ng-click="" class="botao">Sortear</button>
 	</div>
 <script src="app.js"></script>
 </body>
