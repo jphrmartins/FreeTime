@@ -31,9 +31,9 @@
                     var posicao = pegarPosicaoListaPai(ran, listaSorteioPai);
                     if(listaFilha[i] !== listaSorteioPai[posicao]){
                         listaFilha[i] = listaSorteioPai[posicao];
-                        alert('somente: ' + listaSorteioPai[i] + ', Pode ver a proxima tela.')                            
+                        alert('somente: ' + listaSorteioPai[i].nome + ', Pode ver a proxima tela.')                            
                         alert(listaSorteioPai[i].nome + ', Você pegou: ' 
-                            + listaSorteioPai[posicao] + '. Por favor, avance para a proxima tela');
+                            + listaSorteioPai[posicao].nome + '. Por favor, avance para a proxima tela');
                         i++;
                     }   
                 }
