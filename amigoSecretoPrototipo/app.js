@@ -25,16 +25,34 @@
             var listaSorteioPai = removeNomeInvalido();
             if(listaSorteioPai.length%2 === 0){
                 var listaFilha = [];
-                var i = 0;
-                while(i < listaSorteioPai.length){
-                    var ran = Math.floor((Math.random()*listaSorteioPai.length)+1);
-                    var posicao = pegarPosicaoListaPai(ran, listaSorteioPai);
-                    if(listaFilha[i] !== listaSorteioPai[posicao]){
-                        listaFilha[i] = listaSorteioPai[posicao];
-                        alert('somente: ' + listaSorteioPai[i].nome + ', Pode ver a proxima tela.')                            
-                        alert(listaSorteioPai[i].nome + ', Você pegou: ' 
-                            + listaSorteioPai[posicao].nome + '. Por favor, avance para a proxima tela');
-                        i++;
+                var volta = 0;
+                while(volta < listaSorteioPai.length){
+                    var id = Math.floor((Math.random()*listaSorteioPai.length)+1);
+                    var index = pegarPosicaoListaPai(id, listaSorteioPai);
+                    if(!listaFilha.length){
+                        if(index !== 0){
+                            listaFilha[volta] = listaSorteioPai[index];
+                            alert('somente: ' + listaSorteioPai[volta].nome + ', Pode ver a proxima tela.')                            
+                            alert(listaSorteioPai[volta].nome + ', Você pegou: ' 
+                                + listaSorteioPai[index].nome + '. Por favor, avance para a proxima tela');
+                            volta++;
+                        }
+                    } else {
+                        if(id !== listaSorteioPai[volta].id){
+                            var saiu = false;
+                            for (let loop = 0; loop < listaFilha.length; loop++) {
+                                if(listaFilha[loop].id === id){
+                                    saiu = true;
+                                }
+                            }
+                            if(!saiu){
+                                listaFilha[volta] = listaSorteioPai[index];
+                                alert('somente: ' + listaSorteioPai[volta].nome + ', Pode ver a proxima tela.')                            
+                                alert(listaSorteioPai[volta].nome + ', Você pegou: ' 
+                                    + listaSorteioPai[index].nome + '. Por favor, avance para a proxima tela');
+                                volta++;
+                            }
+                        }
                     }   
                 }
             } else {
@@ -53,8 +71,8 @@
         function removeNomeInvalido() {
             var lista = [];
             for (let i = 0; i < $scope.listaAmigos.length; i++) {
-                if ($scope.listaAmigos[i].nome !== ' ' || !$scope.listaAmigos[i].nome) {
-                  lista.push($scope.listaAmigos[i]);
+                if ($scope.listaAmigos[i].nome) {
+                    lista.push($scope.listaAmigos[i]);
                 }
             }
             return lista;    
