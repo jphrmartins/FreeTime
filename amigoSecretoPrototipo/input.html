@@ -62,7 +62,7 @@
 	<div id="corpo">
 		<div class="inputs" ng-repeat="integrante in listaAmigos track by $index">
 			<label><b>Nome :<b></label>
-			<input type="text" placeholder="{{integrante.id}}" ng-model="integrante.nome"/>
+			<input type="text" placeholder="{{integrante.id}}" ng-model="integrante.nome" maxlength="25"/>
 		</div>
 	</div>
 
