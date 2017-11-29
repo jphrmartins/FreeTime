@@ -28,14 +28,14 @@
                 var i = 0;
                 while(i < listaSorteioPai.length){
                     var ran = Math.floor((Math.random()*listaSorteioPai.length)+1);
-                        var posicao = pegarPosicaoListaPai(ran, listaSorteioPai);
-                        if(listaFilha[i] !== listaSorteioPai[posicao]){
-                            listaFilha[i] = listaSorteioPai[posicao];
-                            alert('somente: ' + listaSorteioPai[i] + ', Pode ver a proxima tela.')                            
-                            alert(listaSorteioPai[i].nome + ', Você pegou: ' 
-                                + listaSorteioPai[posicao] + '. Por favor, avance para a proxima tela');
-                            i++;
-                        }   
+                    var posicao = pegarPosicaoListaPai(ran, listaSorteioPai);
+                    if(listaFilha[i] !== listaSorteioPai[posicao]){
+                        listaFilha[i] = listaSorteioPai[posicao];
+                        alert('somente: ' + listaSorteioPai[i] + ', Pode ver a proxima tela.')                            
+                        alert(listaSorteioPai[i].nome + ', Você pegou: ' 
+                            + listaSorteioPai[posicao] + '. Por favor, avance para a proxima tela');
+                        i++;
+                    }   
                 }
             } else {
                 alert("Número de pessoas invalidas. Requer um número par de pessoas");
