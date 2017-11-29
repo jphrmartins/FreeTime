@@ -9,25 +9,57 @@
             $scope.listaAmigos = [];
         }
         
-        for (var index = 1; index < 12; index++) {
+        for (var index = 1; index <= 4; index++) {
             $scope.listaAmigos.push($scope.amigo);
             $scope.amigo = {'id': index + 1, 'nome': ''};
         }
         $scope.adicionar = function(){
-            var id = $scope.listaAmigos.length + 1;
-            console.log(($scope.listaAmigos.length + 1) + ', id:' + id);
-            console.log('1 ' + $scope.amigo.id)
-            $scope.amigo.id = id;
-            console.log('2 ' + $scope.amigo.id)
-            $scope.listaAmigos.push($scope.amigo);
-        }
-
-        $scope.sortear = function(){
-            var lista = $scope.listaAmigos;
-            while (lista.length != 0) {
-                var ran = Math.floor(Math.random()*lista.length);
+            for (let index = 0; index < 2; index++) {
+                var id = $scope.listaAmigos.length + 1;
+                $scope.amigo.id = id;
+                $scope.listaAmigos.push($scope.amigo);
+                $scope.amigo = {'id': 0, 'nome': ''}
             }
         }
+        $scope.sortear = function(){
+            var listaSorteioPai = removeNomeInvalido();
+            if(listaSorteioPai.length%2 === 0){
+                var listaFilha = [];
+                var i = 0;
+                while(i < listaSorteioPai.length){
+                    var ran = Math.floor((Math.random()*listaSorteioPai.length)+1);
+                        var posicao = pegarPosicaoListaPai(ran, listaSorteioPai);
+                        if(listaFilha[i] !== listaSorteioPai[posicao]){
+                            listaFilha[i] = listaSorteioPai[posicao];
+                            alert('somente: ' + listaSorteioPai[i] + ', Pode ver a proxima tela.')                            
+                            alert(listaSorteioPai[i].nome + ', Você pegou: ' 
+                                + listaSorteioPai[posicao] + '. Por favor, avance para a proxima tela');
+                            i++;
+                        }   
+                }
+            } else {
+                alert("Número de pessoas invalidas. Requer um número par de pessoas");
+            }
+        }
+        function pegarPosicaoListaPai(id, lista) {
+            var index = 0;
+            while (index < lista.length) {
+                if(lista[index].id === id){
+                    return index;
+                }
+                index++;
+            }
+        }
+        function removeNomeInvalido() {
+            var lista = [];
+            for (let i = 0; i < $scope.listaAmigos.length; i++) {
+                if ($scope.listaAmigos[i].nome !== ' ' || !$scope.listaAmigos[i].nome) {
+                  lista.push($scope.listaAmigos[i]);
+                }
+            }
+            return lista;    
+        }
+        
 
     })
 })();

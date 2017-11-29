@@ -12,7 +12,7 @@
 		background-size: 100%;
 	}
 	input{
-		font-size: 19px;
+		font-size: 15px;/*resolução pc 15*//*resolução antiga 19*/
 		font-family:'Cabin Sketch', cursive;
 		margin-top: 10px;
 		display: inline-block;
@@ -25,7 +25,7 @@
 		margin-left: 10px;
 	}
 	.botao{
-		margin:100px auto;
+		margin: 20px auto;
 		width: 200px;
 
 	}
@@ -42,11 +42,13 @@
 		
 	}
 	#corpo{
-		width: 80%;
+		width: 73%;
 		margin:10px auto;
+		padding: 0px;
+		padding-bottom: 15px;
 	}
 	#botoes{
-		margin:5px auto;
+		margin:2px auto;
 		text-align: center;
 	}
 	.inputs{
@@ -58,16 +60,16 @@
 <body ng-controller="interface">
 
 	<div id="corpo">
-		<div class="inputs" ng-repeat="amigos in listaAmigos track by $index">
+		<div class="inputs" ng-repeat="integrante in listaAmigos track by $index">
 			<label><b>Nome :<b></label>
-			<input type="text" />
+			<input type="text" placeholder="{{integrante.id}}" ng-model="integrante.nome"/>
 		</div>
 	</div>
 
 
 	<div id="botoes">
 		<button ng-click="adicionar()" class="botao">Adicionar</button>
-		<button ng-click="" class="botao">Sortear</button>
+		<button ng-click="sortear()" class="botao">Sortear</button>
 	</div>
 <script src="app.js"></script>
 </body>
