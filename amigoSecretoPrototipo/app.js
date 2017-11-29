@@ -24,9 +24,7 @@
             var listaFilha = [];
             var volta = 0; 
             if(listaSorteioPai.length !==1){
-                debugger;
                 while(volta < listaSorteioPai.length){
-                    debugger;
                     var id = Math.floor((Math.random()*listaSorteioPai.length)+1);
                     var index = pegarPosicaoListaPai(id, listaSorteioPai);
                     if(!listaFilha.length){
@@ -58,14 +56,12 @@
             return id !== listaSorteioPai[volta].id;
         }
         function pessoaQueFaltaUltimaDaLista(volta, listaSorteioPai,listaFilha, id) {
-            debugger;
             return volta + 2 === listaSorteioPai.length  
                     && casoPessoaAindaNaoRetirada(listaFilha, listaSorteioPai[listaSorteioPai.length-1].id)
                     && casoPessoaAindaNaoRetirada(listaFilha, listaSorteioPai[volta].id)
                     && casoPessoaAindaNaoRetirada(listaFilha, id); 
         }
         function casoPessoaAindaNaoRetirada(listaFilha, id) {
-            debugger;
             for (let loop = 0; loop < listaFilha.length; loop++) {
                 if(listaFilha[loop].id === id){
                     return false;
@@ -82,7 +78,6 @@
             return volta;
         }
         function pegarPosicaoListaPai(id, lista) {
-            debugger;
             var index = 0;
             while (index < lista.length) {
                 if(lista[index].id === id){
