@@ -9,7 +9,7 @@
             $scope.listaAmigos = [];
         }
         
-        for (var index = 1; index <= 4; index++) {
+        for (var index = 1; index <= 5; index++) {
             $scope.listaAmigos.push($scope.amigo);
             $scope.amigo = {'id': index + 1, 'nome': ''};
         }
