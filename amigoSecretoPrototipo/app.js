@@ -31,26 +31,12 @@
                     var index = pegarPosicaoListaPai(id, listaSorteioPai);
                     if(!listaFilha.length){
                         if(index !== 0){
-                            listaFilha[volta] = listaSorteioPai[index];
-                            alert('somente: ' + listaSorteioPai[volta].nome + ', Pode ver a proxima tela.')                            
-                            alert(listaSorteioPai[volta].nome + ', Você pegou: ' 
-                                + listaSorteioPai[index].nome + '. Por favor, avance para a proxima tela');
-                            volta++;
+                            volta = amigoSecretoSelecionado(volta, index, listaFilha, listaSorteioPai);
                         }
                     } else {
-                        if(id !== listaSorteioPai[volta].id){
-                            var saiu = false;
-                            for (let loop = 0; loop < listaFilha.length; loop++) {
-                                if(listaFilha[loop].id === id){
-                                    saiu = true;
-                                }
-                            }
-                            if(!saiu){
-                                listaFilha[volta] = listaSorteioPai[index];
-                                alert('somente: ' + listaSorteioPai[volta].nome + ', Pode ver a proxima tela.')                            
-                                alert(listaSorteioPai[volta].nome + ', Você pegou: ' 
-                                    + listaSorteioPai[index].nome + '. Por favor, avance para a proxima tela');
-                                volta++;
+                        if(id !== listaSorteioPai[volta].id){      
+                            if(casoPessoaJaRetirada(listaFilha, id)){
+                                volta = amigoSecretoSelecionado(volta, index, listaFilha, listaSorteioPai);
                             }
                         }
                     }   
@@ -58,6 +44,22 @@
             } else {
                 alert("Número de pessoas invalidas. Requer um número par de pessoas");
             }
+        }
+        function casoPessoaAindaNaoRetirada(listaFilha, id) {
+            for (let loop = 0; loop < listaFilha.length; loop++) {
+                if(listaFilha[loop].id === id){
+                    return false;
+                }
+            }
+            return true;
+        }
+        function amigoSecretoSelecionado(volta, index, listaFilha, listaSorteioPai) {
+            listaFilha[volta] = listaSorteioPai[index];
+            alert('somente: ' + listaSorteioPai[volta].nome + ', Pode ver a proxima tela.')                            
+            alert(listaSorteioPai[volta].nome + ', Você retirou: ' 
+                + listaSorteioPai[index].nome + '. Por favor, avance para a proxima tela');
+            volta++
+            return volta;
         }
         function pegarPosicaoListaPai(id, lista) {
             var index = 0;
